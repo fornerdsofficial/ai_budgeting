@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 알고리즘 분석 - 지자체 예산 AI 편성 시스템</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/analysis.css">
+</head>
+<body>
+    <header>
+        <div class="header-container container">
+            <div class="logo">
+                <img src="assets/img/logo.svg" alt="AI 예산편성 시스템 로고">
+                <h1>지자체 예산 AI 편성 시스템</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">홈</a></li>
+                    <li><a href="data-collection.html">데이터 수집</a></li>
+                    <li><a href="analysis.html" class="active">AI 분석</a></li>
+                    <li><a href="budget-result.html">예산안 결과</a></li>
+                    <li><a href="dashboard.html">BI 대시보드</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-title">
+                <h2>AI 알고리즘 분석</h2>
+                <p>업로드된 데이터를 기반으로 인공지능 알고리즘이 최적의 예산 편성 방안을 도출합니다. 분석 과정과 진행 상황을 실시간으로 확인하세요.</p>
+            </div>
+
+            <div class="analysis-overview card">
+                <div class="card-title">
+                    <i class="fas fa-brain"></i>
+                    <span>AI 분석 개요</span>
+                </div>
+                <div class="card-body">
+                    <div class="analysis-status">
+                        <div class="status-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="status-info">
+                            <h3>분석 상태</h3>
+                            <p id="analysis-status-text">분석 준비 중...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar" id="analysis-progress" style="width: 0%"></div>
+                    </div>
+                    
+                    <div class="progress-info">
+                        <span id="progress-percentage">0%</span>
+                        <span id="estimated-time">예상 소요시간: --:--</span>
+                    </div>
+                    
+                    <div class="analysis-metrics">
+                        <div class="metric">
+                            <div class="metric-value" id="processed-data">0</div>
+                            <div class="metric-label">처리된 데이터 (레코드)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" id="modeling-iterations">0</div>
+                            <div class="metric-label">알고리즘 모델링 반복</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" id="optimized-items">0</div>
+                            <div class="metric-label">최적화된 예산 항목</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-steps-container">
+                <div class="analysis-steps">
+                    <div class="step" id="step-1">
+                        <div class="step-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>1. 데이터 전처리</h3>
+                            <p>데이터 정제, 결측치 처리, 이상치 제거 등의 데이터 전처리 과정을 수행합니다.</p>
+                            <div class="step-status pending">
+                                <i class="fas fa-clock"></i> 대기 중
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step" id="step-2">
+                        <div class="step-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>2. 예산 실적 분석</h3>
+                            <p>과거 예산 집행 실적을 분석하여 패턴과 트렌드를 도출합니다.</p>
+                            <div class="step-status pending">
+                                <i class="fas fa-clock"></i> 대기 중
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step" id="step-3">
+                        <div class="step-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>3. 성과 연계 분석</h3>
+                            <p>예산 투입 대비 성과 지표 분석을 통해 예산 효율성을 평가합니다.</p>
+                            <div class="step-status pending">
+                                <i class="fas fa-clock"></i> 대기 중
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step" id="step-4">
+                        <div class="step-icon">
+                            <i class="fas fa-sort-amount-up"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>4. 우선순위 모델링</h3>
+                            <p>정책 우선순위와 사업 중요도를 반영한 예산 배분 모델을 구축합니다.</p>
+                            <div class="step-status pending">
+                                <i class="fas fa-clock"></i> 대기 중
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step" id="step-5">
+                        <div class="step-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>5. 예산안 최적화</h3>
+                            <p>다양한 요소를 종합적으로 고려하여 최적의 예산 배분안을 도출합니다.</p>
+                            <div class="step-status pending">
+                                <i class="fas fa-clock"></i> 대기 중
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-log card">
+                <div class="card-title">
+                    <i class="fas fa-terminal"></i>
+                    <span>분석 로그</span>
+                </div>
+                <div class="card-body">
+                    <div class="log-container" id="analysis-log">
+                        <div class="log-entry system">
+                            <span class="log-time">10:30:22</span>
+                            <span class="log-message">AI 예산 편성 시스템 초기화 중...</span>
+                        </div>
+                        <div class="log-entry info">
+                            <span class="log-time">10:30:25</span>
+                            <span class="log-message">업로드된 데이터 확인 완료. 분석 준비 중...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="pause-analysis-btn" class="btn btn-secondary" disabled>
+                    <i class="fas fa-pause"></i> 분석 일시정지
+                </button>
+                <button id="start-analysis-btn" class="btn btn-primary">
+                    <i class="fas fa-play"></i> 분석 시작
+                </button>
+                <button id="view-result-btn" class="btn btn-success" disabled>
+                    <i class="fas fa-check-circle"></i> 결과 보기
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 지자체 예산 AI 편성 시스템. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 결과 요약 모달 -->
+    <div class="modal-overlay" id="result-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <i class="fas fa-check-circle"></i> 분석 완료
+                </h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="result-summary">
+                    <h4>예산안 편성 결과 요약</h4>
+                    <ul>
+                        <li>총 분석 항목: <strong>124개</strong></li>
+                        <li>최적화된 예산 항목: <strong>98개</strong></li>
+                        <li>예상 예산 효율성 증가: <strong>12.4%</strong></li>
+                        <li>우선순위 반영률: <strong>95.8%</strong></li>
+                    </ul>
+                    
+                    <h4>분야별 예산 배분</h4>
+                    <div class="mini-chart">
+                        <!-- 분석 결과 차트가 들어갈 자리 -->
+                        <div class="chart-placeholder">
+                            <div style="background-color: var(--primary-color); width: 30%; height: 20px; margin-bottom: 5px;"></div>
+                            <div style="background-color: var(--primary-light); width: 25%; height: 20px; margin-bottom: 5px;"></div>
+                            <div style="background-color: var(--primary-dark); width: 20%; height: 20px; margin-bottom: 5px;"></div>
+                            <div style="background-color: #90C1A9; width: 15%; height: 20px; margin-bottom: 5px;"></div>
+                            <div style="background-color: #5E8C61; width: 10%; height: 20px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="budget-result.html" class="btn btn-primary">예산안 상세 결과 보기</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/analysis.js"></script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BI 대시보드 - 지자체 예산 AI 편성 시스템</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+    <header>
+        <div class="header-container container">
+            <div class="logo">
+                <img src="assets/img/logo.svg" alt="AI 예산편성 시스템 로고">
+                <h1>지자체 예산 AI 편성 시스템</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">홈</a></li>
+                    <li><a href="data-collection.html">데이터 수집</a></li>
+                    <li><a href="analysis.html">AI 분석</a></li>
+                    <li><a href="budget-result.html">예산안 결과</a></li>
+                    <li><a href="dashboard.html" class="active">BI 대시보드</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-title">
+                <h2>데이터 시각화 및 BI 대시보드</h2>
+                <p>예산 편성 과정과 결과를 다양한 차트와 그래프로 시각화하여 직관적으로 파악할 수 있습니다. AI 편성 로직 및 우선순위 설정 기준에 대한 인사이트를 얻으세요.</p>
+            </div>
+
+            <div class="dashboard-filters">
+                <div class="filter-container">
+                    <label for="fiscal-year">회계연도:</label>
+                    <select id="fiscal-year" class="form-control">
+                        <option value="2025">2025년</option>
+                        <option value="2024">2024년</option>
+                        <option value="2023">2023년</option>
+                    </select>
+                </div>
+                <div class="filter-container">
+                    <label for="department-filter">부서:</label>
+                    <select id="department-filter" class="form-control">
+                        <option value="all">전체 부서</option>
+                        <option value="001">기획예산과</option>
+                        <option value="002">행정과</option>
+                        <option value="003">복지과</option>
+                        <option value="004">환경과</option>
+                        <option value="005">문화관광과</option>
+                    </select>
+                </div>
+                <div class="filter-container">
+                    <label for="view-type">보기 유형:</label>
+                    <select id="view-type" class="form-control">
+                        <option value="overview">예산 개요</option>
+                        <option value="comparison">비교 분석</option>
+                        <option value="performance">성과 연계 분석</option>
+                        <option value="priority">우선순위 분석</option>
+                    </select>
+                </div>
+                <button id="apply-filters" class="btn btn-primary">
+                    <i class="fas fa-filter"></i> 필터 적용
+                </button>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- 차트 1: 예산 배분 원형 차트 -->
+                <div class="dashboard-card">
+                    <div class="card-title">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>분야별 예산 배분</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container" id="budget-allocation-chart">
+                            <!-- 차트가 여기에 그려짐 -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 차트 2: 부서별 예산 막대 차트 -->
+                <div class="dashboard-card">
+                    <div class="card-title">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>부서별 예산 배분</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container" id="department-budget-chart">
+                            <!-- 차트가 여기에 그려짐 -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 차트 3: 전년 대비 예산 변화 -->
+                <div class="dashboard-card">
+                    <div class="card-title">
+                        <i class="fas fa-chart-line"></i>
+                        <span>전년 대비 예산 변화</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container" id="budget-change-chart">
+                            <!-- 차트가 여기에 그려짐 -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 차트 4: 성과 지표 대비 예산 효율성 -->
+                <div class="dashboard-card">
+                    <div class="card-title">
+                        <i class="fas fa-chart-scatter"></i>
+                        <span>성과 대비 예산 효율성</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container" id="performance-chart">
+                            <!-- 차트가 여기에 그려짐 -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 차트 5: 우선순위별 예산 배분 -->
+                <div class="dashboard-card full-width">
+                    <div class="card-title">
+                        <i class="fas fa-sort-amount-up"></i>
+                        <span>우선순위별 예산 배분</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container" id="priority-chart">
+                            <!-- 차트가 여기에 그려짐 -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 차트 6: AI 편성 로직 인사이트 -->
+                <div class="dashboard-card full-width">
+                    <div class="card-title">
+                        <i class="fas fa-brain"></i>
+                        <span>AI 편성 로직 인사이트</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="insights-container">
+                            <div class="insight-card">
+                                <div class="insight-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div class="insight-content">
+                                    <h3>성과 기반 배분</h3>
+                                    <p>지난 3년간의 성과 지표가 높은 사업에 대해 예산 증액 비중을 높게 설정했습니다. 특히 취약계층 지원사업은 수혜자 목표 달성률이 105%로 우수하여 10% 증액되었습니다.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="insight-card">
+                                <div class="insight-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div class="insight-content">
+                                    <h3>정책 우선순위 반영</h3>
+                                    <p>지자체 핵심 정책 방향인 '복지 강화'와 '그린뉴딜'에 부합하는 사업들에 대해 우선 배분이 이루어졌습니다. 환경 분야와 복지 분야의 예산 증가율이 가장 높게 나타났습니다.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="insight-card">
+                                <div class="insight-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div class="insight-content">
+                                    <h3>집행률 반영</h3>
+                                    <p>과거 3년간 예산 집행률이 90% 미만인 사업에 대해서는 예산 감액 또는 동결이 제안되었습니다. 스마트시티 조성사업과 문화관광사업의 경우 초기 투자 단계를 넘어 효율화 단계로 전환되어 예산이 일부 조정되었습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-secondary" id="export-dashboard-btn">
+                    <i class="fas fa-download"></i> 대시보드 내보내기
+                </button>
+                <button class="btn btn-primary" id="print-dashboard-btn">
+                    <i class="fas fa-print"></i> 대시보드 인쇄
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 지자체 예산 AI 편성 시스템. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 차트 라이브러리 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

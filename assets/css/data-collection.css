@@ -1,0 +1,152 @@
+/* 데이터 수집 페이지 전용 스타일 */
+
+.data-collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.data-source-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.data-source-card .card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.file-upload-container {
+    margin: 15px 0;
+}
+
+.file-upload-container span {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.data-source-status {
+    margin-top: auto;
+    padding-top: 15px;
+    display: flex;
+    align-items: center;
+    border-top: 1px dashed var(--border-color);
+}
+
+.status-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+}
+
+.status-icon.success {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: var(--success-color);
+}
+
+.status-icon.error {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: var(--error-color);
+}
+
+.status-icon.pending {
+    background-color: rgba(255, 152, 0, 0.2);
+    color: var(--warning-color);
+}
+
+.status-icon.processing {
+    background-color: rgba(3, 169, 244, 0.2);
+    color: #03A9F4;
+}
+
+.status-text {
+    font-size: 14px;
+}
+
+.connection-form {
+    margin: 15px 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.data-preview-card {
+    margin-bottom: 30px;
+}
+
+.data-preview-selector {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.data-preview-selector label {
+    margin-right: 10px;
+    font-weight: 500;
+}
+
+.data-preview-selector select {
+    width: 200px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+    .data-preview-selector {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .data-preview-selector label {
+        margin-bottom: 5px;
+    }
+    
+    .data-preview-selector select {
+        width: 100%;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .action-buttons button {
+        width: 100%;
+    }
+}

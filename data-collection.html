@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 수집 및 연결 - 지자체 예산 AI 편성 시스템</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/data-collection.css">
+</head>
+<body>
+    <header>
+        <div class="header-container container">
+            <div class="logo">
+                <img src="assets/img/logo.svg" alt="AI 예산편성 시스템 로고">
+                <h1>지자체 예산 AI 편성 시스템</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">홈</a></li>
+                    <li><a href="data-collection.html" class="active">데이터 수집</a></li>
+                    <li><a href="analysis.html">AI 분석</a></li>
+                    <li><a href="budget-result.html">예산안 결과</a></li>
+                    <li><a href="dashboard.html">BI 대시보드</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-title">
+                <h2>데이터 수집 및 연결</h2>
+                <p>AI 예산 편성을 위한 데이터를 수집하고 연결합니다. 기존 예산 집행 이력, 사업 성과 지표, 우선순위 사업 등의 데이터를 업로드하거나 기존 시스템과 연결하세요.</p>
+            </div>
+
+            <div class="data-collection-grid">
+                <div class="card data-source-card">
+                    <div class="card-title">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <span>예산 집행 이력 데이터</span>
+                    </div>
+                    <div class="card-body">
+                        <p>지난 3년간의 부서별/사업별 예산 집행 데이터를 업로드하세요.</p>
+                        <div class="file-upload-container">
+                            <label for="budget-history-upload" class="btn btn-primary">
+                                <i class="fas fa-upload"></i> 파일 업로드
+                            </label>
+                            <input type="file" id="budget-history-upload" accept=".csv, .xlsx, .xls" hidden>
+                            <span id="budget-history-filename">선택된 파일 없음</span>
+                        </div>
+                        <div class="data-source-status">
+                            <span class="status-icon pending">
+                                <i class="fas fa-clock"></i>
+                            </span>
+                            <span class="status-text">대기 중</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card data-source-card">
+                    <div class="card-title">
+                        <i class="fas fa-chart-line"></i>
+                        <span>사업 성과 지표 데이터</span>
+                    </div>
+                    <div class="card-body">
+                        <p>사업별 성과 지표 및 KPI 데이터를 업로드하세요.</p>
+                        <div class="file-upload-container">
+                            <label for="performance-upload" class="btn btn-primary">
+                                <i class="fas fa-upload"></i> 파일 업로드
+                            </label>
+                            <input type="file" id="performance-upload" accept=".csv, .xlsx, .xls" hidden>
+                            <span id="performance-filename">선택된 파일 없음</span>
+                        </div>
+                        <div class="data-source-status">
+                            <span class="status-icon pending">
+                                <i class="fas fa-clock"></i>
+                            </span>
+                            <span class="status-text">대기 중</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card data-source-card">
+                    <div class="card-title">
+                        <i class="fas fa-list-ol"></i>
+                        <span>우선순위 사업 데이터</span>
+                    </div>
+                    <div class="card-body">
+                        <p>정책 우선순위 및 중점 추진 사업 데이터를 업로드하세요.</p>
+                        <div class="file-upload-container">
+                            <label for="priority-upload" class="btn btn-primary">
+                                <i class="fas fa-upload"></i> 파일 업로드
+                            </label>
+                            <input type="file" id="priority-upload" accept=".csv, .xlsx, .xls" hidden>
+                            <span id="priority-filename">선택된 파일 없음</span>
+                        </div>
+                        <div class="data-source-status">
+                            <span class="status-icon pending">
+                                <i class="fas fa-clock"></i>
+                            </span>
+                            <span class="status-text">대기 중</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card data-source-card">
+                    <div class="card-title">
+                        <i class="fas fa-database"></i>
+                        <span>기존 시스템 연결</span>
+                    </div>
+                    <div class="card-body">
+                        <p>기존 재정 시스템 또는 다른 데이터 소스와 연결하세요.</p>
+                        <div class="connection-form">
+                            <div class="form-group">
+                                <label for="connection-type">연결 유형</label>
+                                <select id="connection-type" class="form-control">
+                                    <option value="">선택하세요</option>
+                                    <option value="e-호조">e-호조 시스템</option>
+                                    <option value="지방재정통합정보시스템">지방재정통합정보시스템</option>
+                                    <option value="자체 DB">자체 DB</option>
+                                    <option value="기타">기타</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="connection-url">연결 URL 또는 경로</label>
+                                <input type="text" id="connection-url" class="form-control" placeholder="시스템 연결 주소를 입력하세요">
+                            </div>
+                            <button class="btn btn-primary" id="connect-btn">
+                                <i class="fas fa-link"></i> 연결
+                            </button>
+                        </div>
+                        <div class="data-source-status">
+                            <span class="status-icon pending">
+                                <i class="fas fa-clock"></i>
+                            </span>
+                            <span class="status-text">대기 중</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card data-preview-card">
+                <div class="card-title">
+                    <i class="fas fa-table"></i>
+                    <span>데이터 미리보기</span>
+                </div>
+                <div class="card-body">
+                    <div class="data-preview-selector">
+                        <label for="preview-source">미리보기 소스 선택:</label>
+                        <select id="preview-source" class="form-control">
+                            <option value="">선택하세요</option>
+                            <option value="budget-history">예산 집행 이력</option>
+                            <option value="performance">사업 성과 지표</option>
+                            <option value="priority">우선순위 사업</option>
+                        </select>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table id="preview-table">
+                            <thead>
+                                <tr>
+                                    <th>데이터 미리보기가 여기에 표시됩니다.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>먼저 데이터 소스를 업로드하고 미리보기 소스를 선택하세요.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="validate-data-btn" class="btn btn-secondary" disabled>
+                    <i class="fas fa-check-circle"></i> 데이터 검증
+                </button>
+                <button id="proceed-analysis-btn" class="btn btn-primary" disabled>
+                    <i class="fas fa-arrow-right"></i> AI 분석으로 진행
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 지자체 예산 AI 편성 시스템. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 모달 -->
+    <div class="modal-overlay" id="upload-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <i class="fas fa-upload"></i> 데이터 업로드 중
+                </h3>
+                <button class="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 0%"></div>
+                </div>
+                <p id="upload-status">파일 처리 중...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/data-collection.js"></script>
+</body>
+</html>

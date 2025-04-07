@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예산안 자동 편성 결과 - 지자체 예산 AI 편성 시스템</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/budget-result.css">
+</head>
+<body>
+    <header>
+        <div class="header-container container">
+            <div class="logo">
+                <img src="assets/img/logo.svg" alt="AI 예산편성 시스템 로고">
+                <h1>지자체 예산 AI 편성 시스템</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">홈</a></li>
+                    <li><a href="data-collection.html">데이터 수집</a></li>
+                    <li><a href="analysis.html">AI 분석</a></li>
+                    <li><a href="budget-result.html" class="active">예산안 결과</a></li>
+                    <li><a href="dashboard.html">BI 대시보드</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-title">
+                <h2>예산안 자동 편성 결과</h2>
+                <p>AI 알고리즘이 분석한 결과를 바탕으로 생성된 추경 예산안을 확인하세요. 자동 편성된 예산안의 세부 내역을 검토하고 필요한 경우 수정할 수 있습니다.</p>
+            </div>
+
+            <div class="budget-summary-container">
+                <div class="card budget-summary">
+                    <div class="card-title">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>예산안 요약</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="budget-details-container">
+                <div class="budget-controls">
+                    <div class="search-filter">
+                        <input type="text" id="budget-search" placeholder="사업명 또는 부서명 검색" class="form-control">
+                        <select id="department-filter" class="form-control">
+                            <option value="">부서 선택</option>
+                            <option value="001">기획예산과</option>
+                            <option value="002">행정과</option>
+                            <option value="003">복지과</option>
+                            <option value="004">환경과</option>
+                            <option value="005">문화관광과</option>
+                        </select>
+                        <select id="category-filter" class="form-control">
+                            <option value="">분야 선택</option>
+                            <option value="복지">복지분야</option>
+                            <option value="경제">경제분야</option>
+                            <option value="행정">행정분야</option>
+                            <option value="환경">환경분야</option>
+                            <option value="문화">문화관광분야</option>
+                        </select>
+                    </div>
+                    <div class="view-options">
+                        <button class="btn btn-secondary active" id="view-table">
+                            <i class="fas fa-table"></i> 표 보기
+                        </button>
+                        <button class="btn btn-secondary" id="view-cards">
+                            <i class="fas fa-th-large"></i> 카드 보기
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card budget-details">
+                    <div class="card-title">
+                        <i class="fas fa-list-ul"></i>
+                        <span>세부 예산 항목</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i>
+                            <span>AI가 생성한 예산안입니다. 각 항목을 클릭하여 상세 정보를 확인하고 필요시 수정할 수 있습니다.</span>
+                        </div>
+                        
+                        <div class="table-container" id="budget-table-view">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>부서</th>
+                                        <th>사업코드</th>
+                                        <th>사업명</th>
+                                        <th>이전 예산</th>
+                                        <th>AI 편성액</th>
+                                        <th>증감률</th>
+                                        <th>우선순위</th>
+                                        <th>조치</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>복지과</td>
+                                        <td>P004</td>
+                                        <td>취약계층 지원사업</td>
+                                        <td>400,000,000</td>
+                                        <td>440,000,000</td>
+                                        <td class="increase">+10.0%</td>
+                                        <td><span class="badge badge-success">상</span></td>
+                                        <td>
+                                            <button class="btn-icon" data-project="P004">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>기획예산과</td>
+                                        <td>P001</td>
+                                        <td>지역경제활성화사업</td>
+                                        <td>500,000,000</td>
+                                        <td>525,000,000</td>
+                                        <td class="increase">+5.0%</td>
+                                        <td><span class="badge badge-success">상</span></td>
+                                        <td>
+                                            <button class="btn-icon" data-project="P001">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>환경과</td>
+                                        <td>P005</td>
+                                        <td>그린뉴딜 사업</td>
+                                        <td>600,000,000</td>
+                                        <td>660,000,000</td>
+                                        <td class="increase">+10.0%</td>
+                                        <td><span class="badge badge-success">상</span></td>
+                                        <td>
+                                            <button class="btn-icon" data-project="P005">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>행정과</td>
+                                        <td>P003</td>
+                                        <td>스마트시티 조성사업</td>
+                                        <td>800,000,000</td>
+                                        <td>760,000,000</td>
+                                        <td class="decrease">-5.0%</td>
+                                        <td><span class="badge badge-warning">중</span></td>
+                                        <td>
+                                            <button class="btn-icon" data-project="P003">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>문화관광과</td>
+                                        <td>P002</td>
+                                        <td>문화관광사업</td>
+                                        <td>300,000,000</td>
+                                        <td>285,000,000</td>
+                                        <td class="decrease">-5.0%</td>
+                                        <td><span class="badge badge-warning">중</span></td>
+                                        <td>
+                                            <button class="btn-icon" data-project="P002">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="budget-cards" id="budget-cards-view" style="display: none;">
+                            <!-- 카드 형태의 예산 항목 표시 (기본적으로 숨김) -->
+                            <div class="budget-card">
+                                <div class="budget-card-header">
+                                    <span class="badge badge-success">우선순위: 상</span>
+                                    <h3>취약계층 지원사업</h3>
+                                    <p>복지과 | P004</p>
+                                </div>
+                                <div class="budget-card-body">
+                                    <div class="budget-comparison">
+                                        <div class="previous-budget">
+                                            <span class="label">이전 예산</span>
+                                            <span class="value">400,000,000원</span>
+                                        </div>
+                                        <div class="arrow">→</div>
+                                        <div class="new-budget">
+                                            <span class="label">AI 편성액</span>
+                                            <span class="value">440,000,000원</span>
+                                        </div>
+                                    </div>
+                                    <div class="budget-change increase">
+                                        +10.0% (40,000,000원 증가)
+                                    </div>
+                                </div>
+                                <div class="budget-card-footer">
+                                    <button class="btn btn-secondary" data-project="P004">
+                                        <i class="fas fa-edit"></i> 예산 수정
+                                    </button>
+                                    <button class="btn btn-primary" data-project="P004">
+                                        <i class="fas fa-info-circle"></i> 상세 정보
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- 추가 카드들 (반복) -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-secondary" id="export-excel-btn">
+                    <i class="fas fa-file-excel"></i> Excel 내보내기
+                </button>
+                <button class="btn btn-secondary" id="export-pdf-btn">
+                    <i class="fas fa-file-pdf"></i> PDF 내보내기
+                </button>
+                <button class="btn btn-primary" id="save-budget-btn">
+                    <i class="fas fa-save"></i> 예산안 저장
+                </button>
+                <a href="dashboard.html" class="btn btn-success">
+                    <i class="fas fa-chart-bar"></i> BI 대시보드 보기
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 지자체 예산 AI 편성 시스템. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 예산 항목 상세 모달 -->
+    <div class="modal-overlay" id="budget-detail-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <i class="fas fa-file-invoice-dollar"></i> 예산 항목 상세 정보
+                </h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="budget-detail-content">
+                <!-- 상세 정보 내용이 자바스크립트로 채워짐 -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-edit-btn">취소</button>
+                <button class="btn btn-primary" id="save-edit-btn">저장</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/budget-result.js"></script>
+</body>
+</html>
+                    <div class="card-body">
+                        <div class="budget-total-summary">
+                            <div class="summary-item">
+                                <div class="summary-label">총 예산액</div>
+                                <div class="summary-value">₩32,500,000,000</div>
+                            </div>
+                            <div class="summary-item">
+                                <div class="summary-label">증감액</div>
+                                <div class="summary-value increase">+ ₩2,800,000,000</div>
+                            </div>
+                            <div class="summary-item">
+                                <div class="summary-label">증감률</div>
+                                <div class="summary-value increase">+ 9.4%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="budget-category-summary">
+                            <h3>분야별 예산 배분</h3>
+                            <div class="category-bars">
+                                <div class="category-bar">
+                                    <div class="category-info">
+                                        <span class="category-name">복지분야</span>
+                                        <span class="category-percentage">32%</span>
+                                    </div>
+                                    <div class="bar-container">
+                                        <div class="bar" style="width: 32%; background-color: var(--primary-color);"></div>
+                                    </div>
+                                    <div class="category-amount">₩10,400,000,000</div>
+                                </div>
+                                
+                                <div class="category-bar">
+                                    <div class="category-info">
+                                        <span class="category-name">경제분야</span>
+                                        <span class="category-percentage">25%</span>
+                                    </div>
+                                    <div class="bar-container">
+                                        <div class="bar" style="width: 25%; background-color: var(--primary-light);"></div>
+                                    </div>
+                                    <div class="category-amount">₩8,125,000,000</div>
+                                </div>
+                                
+                                <div class="category-bar">
+                                    <div class="category-info">
+                                        <span class="category-name">행정분야</span>
+                                        <span class="category-percentage">18%</span>
+                                    </div>
+                                    <div class="bar-container">
+                                        <div class="bar" style="width: 18%; background-color: var(--primary-dark);"></div>
+                                    </div>
+                                    <div class="category-amount">₩5,850,000,000</div>
+                                </div>
+                                
+                                <div class="category-bar">
+                                    <div class="category-info">
+                                        <span class="category-name">환경분야</span>
+                                        <span class="category-percentage">15%</span>
+                                    </div>
+                                    <div class="bar-container">
+                                        <div class="bar" style="width: 15%; background-color: #90C1A9;"></div>
+                                    </div>
+                                    <div class="category-amount">₩4,875,000,000</div>
+                                </div>
+                                
+                                <div class="category-bar">
+                                    <div class="category-info">
+                                        <span class="category-name">문화관광분야</span>
+                                        <span class="category-percentage">10%</span>
+                                    </div>
+                                    <div class="bar-container">
+                                        <div class="bar" style="width: 10%; background-color: #5E8C61;"></div>
+                                    </div>
+                                    <div class="category-amount">₩3,250,000,000</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>

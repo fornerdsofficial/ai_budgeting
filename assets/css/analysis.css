@@ -1,0 +1,258 @@
+/* AI 분석 페이지 전용 스타일 */
+
+.analysis-overview {
+    margin-bottom: 30px;
+}
+
+.analysis-status {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.analysis-status .status-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    color: white;
+    font-size: 24px;
+}
+
+.analysis-status .status-info h3 {
+    font-size: 18px;
+    color: var(--primary-dark);
+    margin-bottom: 5px;
+}
+
+.analysis-status .status-info p {
+    color: var(--text-light);
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.analysis-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.metric {
+    text-align: center;
+    background-color: var(--background-alt);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.metric-value {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin-bottom: 5px;
+}
+
+.metric-label {
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.analysis-steps-container {
+    margin-bottom: 30px;
+}
+
+.analysis-steps {
+    border-left: 3px solid var(--border-color);
+    margin-left: 20px;
+    padding-left: 20px;
+}
+
+.step {
+    display: flex;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.step:last-child {
+    margin-bottom: 0;
+}
+
+.step:before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 3px;
+    background-color: var(--border-color);
+    left: -20px;
+    top: 25px;
+}
+
+.step-icon {
+    width: 50px;
+    height: 50px;
+    background-color: var(--background-alt);
+    border: 3px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: var(--text-light);
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.step.active .step-icon {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.step.completed .step-icon {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+    color: white;
+}
+
+.step-content {
+    flex-grow: 1;
+}
+
+.step-content h3 {
+    font-size: 18px;
+    color: var(--primary-dark);
+    margin-bottom: 5px;
+}
+
+.step-content p {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.step-status {
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.step-status i {
+    margin-right: 5px;
+}
+
+.step-status.pending {
+    color: var(--warning-color);
+}
+
+.step-status.in-progress {
+    color: #03A9F4; /* 진행 중 색상 */
+}
+
+.step-status.completed {
+    color: var(--success-color);
+}
+
+.log-container {
+    background-color: #2E3440;
+    color: #E5E9F0;
+    border-radius: 4px;
+    padding: 15px;
+    height: 300px;
+    overflow-y: auto;
+    font-family: 'Consolas', monospace;
+    font-size: 14px;
+}
+
+.log-entry {
+    margin-bottom: 5px;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.log-entry:last-child {
+    border-bottom: none;
+}
+
+.log-time {
+    color: #81A1C1;
+    margin-right: 10px;
+}
+
+.log-entry.system .log-message {
+    color: #88C0D0;
+}
+
+.log-entry.info .log-message {
+    color: #A3BE8C;
+}
+
+.log-entry.warning .log-message {
+    color: #EBCB8B;
+}
+
+.log-entry.error .log-message {
+    color: #BF616A;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+/* 결과 요약 모달 스타일 */
+.result-summary h4 {
+    font-size: 16px;
+    color: var(--primary-dark);
+    margin: 20px 0 10px;
+}
+
+.result-summary ul {
+    list-style: none;
+    padding: 0;
+}
+
+.result-summary ul li {
+    margin-bottom: 8px;
+    color: var(--text-light);
+}
+
+.mini-chart {
+    background-color: var(--background-alt);
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.chart-placeholder {
+    width: 100%;
+    padding: 10px;
+}
+
+/* 모바일 반응형 스타일 */
+@media (max-width: 768px) {
+    .analysis-metrics {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .action-buttons button {
+        width: 100%;
+    }
+}
