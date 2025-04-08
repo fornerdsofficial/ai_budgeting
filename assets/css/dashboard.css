@@ -31,29 +31,29 @@
 }
 
 .dashboard-card {
-    background-color: white;
+    background-color: #fff;
     border-radius: 8px;
-    box-shadow: var(--shadow);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
     overflow: hidden;
 }
 
 .dashboard-card.full-width {
-    grid-column: 1 / -1;
+    grid-column: span 2;
 }
 
 .card-title {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    font-weight: 500;
     display: flex;
     align-items: center;
-    padding: 15px;
-    border-bottom: 1px solid var(--border-color);
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--primary-dark);
 }
 
 .card-title i {
-    margin-right: 8px;
-    color: var(--primary-color);
+    margin-right: 10px;
+    color: #4b8b6f;
 }
 
 .card-body {
@@ -61,8 +61,10 @@
 }
 
 .chart-container {
-    height: 300px;
     position: relative;
+    height: 300px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 /* 인사이트 카드 스타일 */
@@ -160,5 +162,13 @@
     
     .action-buttons button {
         width: 100%;
+    }
+    
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .full-width {
+        grid-column: span 1;
     }
 }

@@ -41,13 +41,39 @@ document.addEventListener('DOMContentLoaded', function() {
     // 초기 차트 그리기
     initializeCharts();
     
-    // 모든 차트 초기화 및 생성 함수
+    // 차트 초기화 전에 캔버스 요소가 존재하는지 확인
     function initializeCharts() {
-        createBudgetAllocationChart();
-        createDepartmentBudgetChart();
-        createBudgetChangeChart();
-        createPerformanceChart();
-        createPriorityChart();
+        console.log('차트 초기화 시작');
+        
+        if (!budgetAllocationChart) {
+            console.error('budget-allocation-chart 요소를 찾을 수 없습니다.');
+        } else {
+            createBudgetAllocationChart();
+        }
+        
+        if (!departmentBudgetChart) {
+            console.error('department-budget-chart 요소를 찾을 수 없습니다.');
+        } else {
+            createDepartmentBudgetChart();
+        }
+        
+        if (!budgetChangeChart) {
+            console.error('budget-change-chart 요소를 찾을 수 없습니다.');
+        } else {
+            createBudgetChangeChart();
+        }
+        
+        if (!performanceChart) {
+            console.error('performance-chart 요소를 찾을 수 없습니다.');
+        } else {
+            createPerformanceChart();
+        }
+        
+        if (!priorityChart) {
+            console.error('priority-chart 요소를 찾을 수 없습니다.');
+        } else {
+            createPriorityChart();
+        }
     }
     
     // 모든 차트 업데이트 함수
